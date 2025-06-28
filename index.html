@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>3D Würfel Scroll Rotation</title>
+<title>Mittiger 3D Würfel mit Scroll</title>
 <style>
-  body, html {
-    height: 300vh; /* mehr Scrollhöhe für volle Rotation */
-    margin: 0;
+  html, body {
+    margin: 0; padding: 0;
+    height: 300vh; /* Scrollhöhe */
     background: #222;
     overflow-x: hidden;
-    perspective: 1000px;
     font-family: Arial, sans-serif;
+    perspective: 1000px;
   }
 
   .scene {
-    position: fixed;
+    position: fixed;  /* Fixiert im Viewport */
     top: 50%;
     left: 50%;
     width: 250px;
@@ -54,7 +54,6 @@
   .left   { transform: rotateY(-90deg) translateZ(125px); }
   .top    { transform: rotateX( 90deg) translateZ(125px); }
   .bottom { transform: rotateX(-90deg) translateZ(125px); }
-
 </style>
 </head>
 <body>
@@ -76,13 +75,11 @@
 
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
-    // Progress 0 - 1
     const progress = scrollTop / maxScroll;
 
-    // Rotation: volle Umdrehung (360 Grad) multipliziert mit Progress
-    // Hier rotiere um X und Y Achse für mehr 3D Effekt
-    const rotateY = progress * 360 * 2; // 2 volle Drehungen um Y
-    const rotateX = progress * 360;     // 1 volle Drehung um X
+    // Rotation um X- und Y-Achse für schöne Würfeldrehung
+    const rotateY = progress * 720; // 2 volle Drehungen um Y
+    const rotateX = progress * 360; // 1 volle Drehung um X
 
     cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
