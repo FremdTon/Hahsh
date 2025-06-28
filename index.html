@@ -14,12 +14,8 @@
     perspective: 1000px;
   }
 
-  body {
-    position: relative;
-  }
-
   .scene {
-    position: fixed;  /* Fixiert im Viewport */
+    position: fixed;
     top: 50%;
     left: 50%;
     width: 250px;
@@ -27,7 +23,8 @@
     transform-style: preserve-3d;
     transform-origin: center center;
     transform: translate(-50%, -50%);
-    pointer-events: none; /* Verhindert, dass Szene scrollt oder ausgewählt wird */
+    pointer-events: none;
+    z-index: 9999;
   }
 
   .cube {
